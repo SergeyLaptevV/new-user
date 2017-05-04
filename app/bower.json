@@ -1,0 +1,22 @@
+{
+  "name": "app",
+  "authors": [
+    "Laptev <svet-smeh12@ukr.net>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.6",
+    "jquery": "1.9.1",
+    "angular": "1.5.11"
+  }
+}

@@ -1,0 +1,9 @@
+form .ng-pristine {
+    border: 1px dotted red;
+}
+input.ng-invalid.ng-dirty {
+    background-color:pink;
+}
+input.ng-valid.ng-dirty {
+    background-color:lightgreen;
+}
