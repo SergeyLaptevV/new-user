@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>new user</title>
+    <script src="library/angular/angular.min.js"></script>
+    <link rel="stylesheet" href="library/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="library/bootstrap-3.3.6-dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--Form to fill-->
+                    <form name="myForm">
+                        <div class="well">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input name="name" type="text" class="form-control" placeholder="Name"
+                                       required ng-model="name">
+                            </div>
+                            <div class="form-group">
+                                <label>username</label>
+                                <input name="username" type="text" class="form-control" placeholder="username"
+                                       required ng-model="username">
+                            </div>
+                            <div class="form-group">
+                                <label>email</label>
+                                <input name="email" type="email" class="form-control" placeholder="email"
+                                       required ng-model="email">
+                                <!--([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}-->
+                            </div>
+                            <div class="form-group">
+                                <label>phone</label>
+                                <input name="phone" type="tel" title="8xxx-xxx-xx-xx" class="form-control"
+                                       placeholder="8xxx-xxx-xx-xx" required ng-model="phone"
+                                       pattern="8[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}">
+                            </div>
+                            <div class="form-group">
+                                <label>website</label>
+                                <input name="website" type="ulr" title="website" class="form-control"
+                                       placeholder="https://www.google.com.ua/" required ng-model="website">
+                                <!--((https?|ftp)\:\/\/)?([a-z0-9]{1})((\.[a-z0-9-])|([a-z0-9-]))*\.([a-z]{2,6})(\/?)-->
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" ng-click="addNewUser()"
+                                    ng-disabled="myForm.$invalid">
+                                add user
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--Results table-->
+                    <table class="table table-border table-striped">
+                        <thead>
+                            <tr class="info">
+                                <th>
+                                    №
+                                </th>
+                                <th ng-click="orderByMe('name')">
+                                    name
+                                    <br/>
+                                </th>
+                                <th ng-click="orderByMe('username')">
+                                    username
+                                </th>
+                                <th ng-click="orderByMe('email)">
+                                    email
+                                </th>
+                                <th ng-click="orderByMe('phone')">
+                                    phone
+                                </th>
+                                <th ng-click="orderByMe('website')">
+                                    website
+                                </th>
+
+                                <th ng-click="orderByMe('address.street')">
+                                    address.street
+                                </th>
+                                <th ng-click="orderByMe('company.name')">
+                                    company.name
+                                </th>
+                                <th>
+                                    &nbsp;
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in items | orderBy:myOrderBy">
+                                <td>{{$index +1}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.username}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{item.website}}</td>
+                                <td>{{item.address.street}}</td>
+                                <td>{{item.company.name}}</td>
+                                <td>
+                                    <button class="btn btn-danger" ng-click="removeItem($index)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</body>
+<script src="js/main.js"></script>
+</html>
